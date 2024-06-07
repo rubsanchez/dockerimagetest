@@ -28,7 +28,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/dockerimagetest/hello-image:latest
+          tags: ghcr.io/${{ github.repository_owner }}/hello-image:latest
 
       - name: Logout from GitHub Container Registry
         run: docker logout ghcr.io
