@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /dockerimagetest
 
 # Copy everything
-COPY . ./
+COPY Dotnet.Hello/Dotnet.Hello ./
 # Restore as distinct layers
 RUN dotnet restore
 # Build and publish a release
