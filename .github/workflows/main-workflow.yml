@@ -26,10 +26,10 @@ jobs:
       - name: Build Docker image
         env:
           SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}  
-        run: docker build --build-arg SECRET_TOKEN=${SECRET_TOKEN} --tag ghcr.io/${{ github.repository }}/hello-image:${{ github.sha }} .
+        run: docker build --build-arg SECRET_TOKEN=${SECRET_TOKEN} --tag ghcr.io/${{ github.repository_owner }}/hello-image:latest .
           
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository }}/hello-image:${{ github.sha }}
+        run: docker push ghcr.io/${{ github.repository_owner }}/hello-image:latest
 
       - name: Logout from GitHub Container Registry
         run: docker logout ghcr.io
