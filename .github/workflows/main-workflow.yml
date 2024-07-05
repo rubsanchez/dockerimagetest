@@ -23,12 +23,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         env:
           SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}  
-        run: |
-          docker build --build-arg SECRET_TOKEN=${SECRET_TOKEN} -t hello-image .
-          docker push hello-image:latest
+        run: docker build --build-arg SECRET_TOKEN=${SECRET_TOKEN} -t hello-image:2.0 .
+          
+      - name: Push Docker image
+        run: docker push hello-image:latest
 
       - name: Logout from GitHub Container Registry
         run: docker logout ghcr.io
